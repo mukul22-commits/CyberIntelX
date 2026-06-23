@@ -12,6 +12,16 @@ df = pd.read_sql(
     conn
 )
 
+# Convert existing values safely
+df["threat_score"] = (
+    pd.to_numeric(
+        df["threat_score"],
+        errors="coerce"
+    )
+    .fillna(0)
+    .astype(int)
+)
+
 for index, row in df.iterrows():
 
     score = calculate_score(
