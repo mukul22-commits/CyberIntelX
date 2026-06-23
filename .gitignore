@@ -1,0 +1,34 @@
+# Environment
+.env
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Runtime folders
+logs/
+backup/
+evidence/
+reports/
+data/
+
+# Generated files
+project_structure.txt
+requirements_snapshot.txt
+app_dump.txt
+PRAGMA table_info(intelligence_data)
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
