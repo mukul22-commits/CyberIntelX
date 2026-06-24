@@ -3,8 +3,6 @@ import sqlite3
 import pandas as pd
 import plotly.express as px
 
-from streamlit_autorefresh import st_autorefresh
-
 from threat_ticker import threat_ticker
 
 from threat_matrix import threat_matrix
@@ -28,11 +26,6 @@ from officer_workload_dashboard import (
 
 
 def fusion_center_home():
-
-    st_autorefresh(
-        interval=30000,
-        key="fusion_center_refresh"
-    )
 
 
     st.title(
