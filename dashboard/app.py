@@ -1,3 +1,4 @@
+import setup_project
 import sys
 import os
 
