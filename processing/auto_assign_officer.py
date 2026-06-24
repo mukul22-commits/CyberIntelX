@@ -23,64 +23,57 @@ def auto_assign_officer(case_id):
     if not row:
 
         conn.close()
-
         return None
 
-    risk_score = row[0]
+    risk_score = int(row[0])
 
     if risk_score >= 80:
 
-        assigned_username = (
-            "rahulkumar_101"
-        )
+        assigned_username = "rahulkumar_101"
+        officer_name = "Rahul Kumar"
+        priority = "Critical"
 
-        officer_name = (
-            "Rahul Kumar"
-        )
+    elif risk_score >= 60:
 
-    elif risk_score >= 50:
+        assigned_username = "rahulkumar_101"
+        officer_name = "Rahul Kumar"
+        priority = "High"
 
-        assigned_username = (
-            "amitsharma_102"
-        )
+    elif risk_score >= 40:
 
-        officer_name = (
-            "Amit Sharma"
-        )
+        assigned_username = "amitsharma_102"
+        officer_name = "Amit Sharma"
+        priority = "Medium"
 
     else:
 
-        assigned_username = (
-            "amitsharma_102"
-        )
-
-        officer_name = (
-            "Amit Sharma"
-        )
+        assigned_username = "amitsharma_102"
+        officer_name = "Amit Sharma"
+        priority = "Low"
 
     cursor.execute(
         """
         UPDATE complaints
         SET
             assigned_username=?,
-            officer_name=?
+            officer_name=?,
+            priority=?,
+            status='Assigned'
         WHERE id=?
         """,
         (
             assigned_username,
             officer_name,
+            priority,
             case_id
         )
     )
 
     conn.commit()
-
     conn.close()
 
     return {
-        "officer_name":
-        officer_name,
-
-        "assigned_username":
-        assigned_username
+        "assigned_username": assigned_username,
+        "officer_name": officer_name,
+        "priority": priority
     }
