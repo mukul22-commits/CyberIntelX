@@ -10,6 +10,7 @@ ROOT_DIR = os.path.dirname(
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
+import setup_project
 
 import streamlit as st
 import pandas as pd
@@ -17,7 +18,7 @@ import sqlite3
 import plotly.express as px
 import subprocess
 
-from login import login_page
+from dashboard.login import login_page
 
 from logout import (
     logout_button
